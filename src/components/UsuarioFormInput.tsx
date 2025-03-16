@@ -20,7 +20,7 @@ const UsuarioFormInput = ({
                 type={tipo}
                 id={id}
                 name={input_name}
-                className="mt-1 p-2 outline-cinzaccr w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-xs"
+                className="mt-1 p-2 border outline-cinzaccr w-full rounded-md border-pretoccr bg-white text-sm text-gray-700 shadow-xs"
             />
         </div>
     )
