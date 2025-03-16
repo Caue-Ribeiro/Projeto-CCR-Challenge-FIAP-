@@ -1,1 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+    --color-vermelhoccr: #a1392c;
+    --color-brancoccr: #ffffff;
+    --color-cinzaccr: #727376;
+    --color-pretoccr: #000000;
+    --color-vermelhoHover: #c46252;
+}
