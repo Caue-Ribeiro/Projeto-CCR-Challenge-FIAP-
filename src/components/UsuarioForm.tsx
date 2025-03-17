@@ -2,6 +2,8 @@ import Form from 'next/form'
 
 import UsuarioFormToggle from './UsuarioFormToggle'
 
+//todo aplicar acessibilidade
+
 const UsuarioForm = () => {
     return (
         <Form

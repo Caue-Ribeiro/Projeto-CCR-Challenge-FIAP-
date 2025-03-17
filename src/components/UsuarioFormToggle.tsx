@@ -4,6 +4,9 @@ import { usePathname } from 'next/navigation'
 import UsuarioFormInput from './UsuarioFormInput'
 import { UsuarioFormInputProps } from '@/interfaces/usuarioProps'
 
+//todo aplicar acessibilidade
+//todo tranferir objetos para pasta data
+
 const camposFormularioRegistro: UsuarioFormInputProps[] = [
     {
         key: 'nome',
