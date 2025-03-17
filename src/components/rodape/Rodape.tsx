@@ -1,0 +1,72 @@
+'use client'
+
+import Link from 'next/link'
+import logoCCR from '../../../public/images/logo-CCR.png'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+
+//todo aplicar acessibilidade
+
+const Rodape = () => {
+    const pathname = usePathname()
+
+    const esconderRotas = ['/login', '/registrar']
+
+    return (
+        !esconderRotas.includes(pathname) && (
+            <footer className="w-full bg-brancoccr text-pretoccr py-6 px-8 flex flex-col md:flex-row justify-between items-center">
+                <div className="flex items-center space-x-4">
+                    <Image
+                        src={logoCCR}
+                        alt="Logo da Empresa"
+                        width={50}
+                        height={50}
+                    />
+                    <span className="text-lg font-semibold">
+                        CCR Mobilidade - Grupo CCR
+                    </span>
+                </div>
+
+                <nav className="flex space-x-6 mt-4 md:mt-0">
+                    <Link
+                        href="/estacao&trens"
+                        className="hover:text-blue-400 transition"
+                    >
+                        Estação e Trens
+                    </Link>
+                    <Link
+                        href="/reportar"
+                        className="hover:text-blue-400 transition"
+                    >
+                        Reportar
+                    </Link>
+                    <Link
+                        href="/perfil"
+                        className="hover:text-blue-400 transition"
+                    >
+                        Perfil
+                    </Link>
+                    <Link
+                        href="/integrantes"
+                        className="hover:text-blue-400 transition"
+                    >
+                        Integrantes
+                    </Link>
+                    <Link
+                        href="/login"
+                        className="hover:text-blue-400 transition"
+                    >
+                        Login
+                    </Link>
+                    <Link
+                        href="/registrar"
+                        className="hover:text-blue-400 transition"
+                    >
+                        Registro
+                    </Link>
+                </nav>
+            </footer>
+        )
+    )
+}
+export default Rodape
