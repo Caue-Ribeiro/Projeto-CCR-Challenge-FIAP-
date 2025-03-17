@@ -1,7 +1,10 @@
 import Image from 'next/image'
 import avatar from '../../../public/images/avatar.png'
+import BotaoCustom from '@/components/BotaoCustom'
 
 //TODO REVISAR E APLICAR MELHORIAS
+//todo aplicar acessibilidade
+//todo aplicar correções que Next está implicando
 
 const Perfil = () => {
     return (
@@ -90,9 +93,11 @@ const Perfil = () => {
                             </div>
 
                             <div className="w-full  text-white  rounded-md border transition  border-vermelhoccr bg-vermelhoccr text-lg font-semibold hover:bg-transparent hover:text-pretoccr focus:ring-3 focus:outline-hidden">
-                                <button type="submit" className="w-full p-4">
-                                    Atualizar
-                                </button>
+                                <BotaoCustom
+                                    nome="Atualizar"
+                                    type="submit"
+                                    className="w-full p-4"
+                                />
                             </div>
                         </form>
                     </div>

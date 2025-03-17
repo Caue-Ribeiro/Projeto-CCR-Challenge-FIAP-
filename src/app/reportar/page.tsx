@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import reportarIMG from '../../../public/images/reportar.webp'
+import BotaoCustom from '@/components/BotaoCustom'
 
 //TODO REVISAR
+//todo aplicar acessibilidade
 
 const page = () => {
     return (
@@ -37,12 +39,12 @@ const page = () => {
                     className="w-full max-w-md p-3 h-32 rounded-lg bg-brancoccr text-pretoccr border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
                 ></textarea>
 
-                <button
+                <BotaoCustom
+                    nome="Confirmar"
                     type="submit"
                     className="w-full max-w-md rounded-md border border-vermelhoccr bg-vermelhoccr px-12 py-3 text-xl font-medium text-white transition hover:bg-transparent hover:text-pretoccr focus:ring-3 focus:outline-hidden"
-                >
-                    Confirmar
-                </button>
+                    aria_label="botão de confirmar"
+                />
             </div>
 
             <div className="w-full h-full md:w-1/2 relative md:h-auto">
