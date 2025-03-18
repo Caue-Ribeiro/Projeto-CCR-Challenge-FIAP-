@@ -1,10 +1,7 @@
 import Image from 'next/image'
 import avatar from '../../../public/images/avatar.png'
 import BotaoCustom from '@/components/BotaoCustom'
-
-//TODO REVISAR E APLICAR MELHORIAS
-//todo aplicar acessibilidade
-//todo aplicar correções que Next está implicando
+import Form from 'next/form'
 
 const Perfil = () => {
     return (
@@ -16,12 +13,12 @@ const Perfil = () => {
                             Perfil
                         </h1>
 
-                        <form>
+                        <Form action={''}>
                             <div className="w-full rounded-sm items-center">
                                 <div className="mx-auto flex justify-center">
                                     <Image
                                         src={avatar}
-                                        alt="foto perfil"
+                                        alt="foto perfil usuário"
                                         className=" w-36 h-36 bg-blue-300/20 rounded-full"
                                     />
                                     <div className="absolute bg-white/90 rounded-full w-6 h-6 text-center ml-28 mt-4">
@@ -31,13 +28,14 @@ const Perfil = () => {
                                             id="upload_profile"
                                             hidden
                                             required
+                                            aria-label="Atualizar foto de perfil"
                                         />
                                         <label htmlFor="upload_profile">
                                             <svg
                                                 data-slot="icon"
                                                 className="w-6 h-5 text-vermelhoccr"
                                                 fill="none"
-                                                stroke-width="1.5"
+                                                strokeWidth="1.5"
                                                 stroke="currentColor"
                                                 viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -45,12 +43,12 @@ const Perfil = () => {
                                             >
                                                 <path
                                                     strokeLinecap="round"
-                                                    stroke-linejoin="round"
+                                                    strokeLinejoin="round"
                                                     d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"
                                                 ></path>
                                                 <path
                                                     strokeLinecap="round"
-                                                    stroke-linejoin="round"
+                                                    strokeLinejoin="round"
                                                     d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z"
                                                 ></path>
                                             </svg>
@@ -74,6 +72,7 @@ const Perfil = () => {
                                         id="usuario"
                                         className="mt-2 p-4 w-full border-1 rounded-lg text-pretoccr"
                                         placeholder="Usuário"
+                                        aria-label="Campo de entrada para o nome de usuário"
                                     />
                                 </div>
                                 <div className="w-full mb-4 lg:mt-6">
@@ -88,6 +87,7 @@ const Perfil = () => {
                                         id="email"
                                         className="mt-2 p-4 w-full border-1 rounded-lg text-pretoccr"
                                         placeholder="E-mail"
+                                        aria-label="Campo de entrada para o e-mail"
                                     />
                                 </div>
                             </div>
@@ -97,9 +97,10 @@ const Perfil = () => {
                                     nome="Atualizar"
                                     type="submit"
                                     className="w-full p-4"
+                                    aria-label="Botão para atualizar o perfil"
                                 />
                             </div>
-                        </form>
+                        </Form>
                     </div>
                 </div>
             </div>

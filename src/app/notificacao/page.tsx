@@ -1,6 +1,3 @@
-//todo REVISAR E APLICAR MELHORIAS
-//todo aplciar acessibilidade
-
 const notificacoes = [
     {
         id: 1,
@@ -24,17 +21,18 @@ const notificacoes = [
 
 const Notificacoes = () => {
     return (
-        <div className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
+        <section className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
             <h1 className="text-3xl font-bold mb-6 text-center">
                 Notificações
             </h1>
 
-            <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-4 sm:p-6 md:p-8">
+            <article className="w-full max-w-2xl bg-white rounded-lg shadow-md p-4 sm:p-6 md:p-8">
                 {notificacoes.length > 0 ? (
                     notificacoes.map(notificacao => (
                         <div
                             key={notificacao.id}
                             className="border-b last:border-none p-4 sm:p-6"
+                            aria-labelledby={`notificacao-${notificacao.id}-titulo`}
                         >
                             <h2 className="text-lg sm:text-xl font-semibold">
                                 {notificacao.titulo}
@@ -52,8 +50,8 @@ const Notificacoes = () => {
                         Nenhuma notificação disponível.
                     </p>
                 )}
-            </div>
-        </div>
+            </article>
+        </section>
     )
 }
 
