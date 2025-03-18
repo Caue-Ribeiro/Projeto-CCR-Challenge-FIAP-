@@ -1,6 +1,6 @@
 import { IntegranteProps } from '@/interfaces/IntegranteProps'
-import github from '../../../public/images/github-logo.png'
-import linkedin from '../../../public/images/linkedin.png'
+import github from '../../public/images/github-logo.png'
+import linkedin from '../../public/images/linkedin.png'
 
 export const integrantes: IntegranteProps[] = [
     {
