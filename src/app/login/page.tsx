@@ -4,9 +4,6 @@ import logoCCR from '../../../public/images/logo-CCR.png'
 import Link from 'next/link'
 import UsuarioForm from '@/components/UsuarioForm'
 
-//Todo colocar um link de home
-//todo aplicar acessibilidade
-
 const Login = () => {
     return (
         <section className="bg-white">
@@ -18,12 +15,16 @@ const Login = () => {
                         alt="login background"
                     />
 
-                    <div className="hidden lg:relative lg:block lg:m-auto lg:justify-items-center lg:p-12">
+                    <div
+                        className="hidden lg:relative lg:block lg:m-auto lg:justify-items-center lg:p-12"
+                        aria-label="Página Inicial"
+                    >
                         <Link className="block text-white" href="/">
                             <Image
                                 src={logoCCR}
                                 alt="logo CCR"
                                 className="w-28 h-28 bg-gray-100/60 rounded-3xl"
+                                aria-hidden="true"
                             />
                         </Link>
 
