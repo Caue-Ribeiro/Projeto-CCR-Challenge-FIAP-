@@ -2,8 +2,6 @@ import Image from 'next/image'
 import estacaoTrensIMG from '../../../public/images/estacao_trens.webp'
 import BotaoCustom from '@/components/BotaoCustom'
 
-//todo aplicar acessibilidade
-
 const EstacaoTrens = () => {
     return (
         <section className="flex flex-col-reverse md:flex-row h-screen">

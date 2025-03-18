@@ -3,8 +3,6 @@ import estacaoTrensIMG from '../../public/images/estacao_trens.webp'
 import reportarIMG from '../../public/images/reportar.webp'
 import Link from 'next/link'
 
-//todo em serviços se der tempo, fazer um componente dinamico
-
 export default function Home() {
     return (
         <main>
@@ -13,9 +11,10 @@ export default function Home() {
                     <div className="absolute inset-0">
                         <Image
                             src={estacaoTrensIMG}
-                            alt="Serviço 1"
+                            alt="Imagem ilustrativa de estações e trens"
                             layout="fill"
                             className="object-cover"
+                            aria-hidden="true"
                         />
                         <div className="absolute inset-0 bg-black opacity-50"></div>
                     </div>
@@ -29,6 +28,7 @@ export default function Home() {
                         <Link
                             href="/estacao&trens"
                             className="mt-6 px-6 py-3 border bg-vermelhoccr border-vermelhoccr hover:bg-transparent transition rounded-lg text-lg font-semibold"
+                            aria-label="Acessar informações sobre estações e trens"
                         >
                             Acessar
                         </Link>
@@ -38,10 +38,10 @@ export default function Home() {
                         style={{
                             clipPath: 'polygon(100% 0%, 0% 100%, 100% 100%)',
                         }}
+                        aria-hidden="true"
                     ></div>
                 </section>
 
-                {/* Serviço 2 */}
                 <section className="relative h-screen">
                     <div className="absolute inset-0">
                         <Image
@@ -49,6 +49,7 @@ export default function Home() {
                             alt="Serviço 2"
                             layout="fill"
                             className="object-cover"
+                            aria-hidden="true"
                         />
                         <div className="absolute inset-0 bg-black opacity-50"></div>
                     </div>
@@ -62,6 +63,7 @@ export default function Home() {
                         <Link
                             href="/reportar"
                             className="mt-6 px-6 py-3 border bg-vermelhoccr border-vermelhoccr hover:bg-transparent transition rounded-lg text-lg font-semibold"
+                            aria-label="Acessar página de reportar problemas"
                         >
                             Acessar
                         </Link>
@@ -69,6 +71,7 @@ export default function Home() {
                     <div
                         className="absolute top-0 left-0 w-full h-32 bg-cinzaccr"
                         style={{ clipPath: 'polygon(0% 0%, 0% 100%, 100% 0%)' }}
+                        aria-hidden="true"
                     ></div>
                 </section>
             </div>
