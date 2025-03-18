@@ -5,7 +5,6 @@ import Link from 'next/link'
 import UsuarioForm from '@/components/UsuarioForm'
 
 // TODO colocar conferencia de igualdade de senhas
-//Todo colocar um link de home
 
 const Registrar = () => {
     return (
@@ -15,14 +14,18 @@ const Registrar = () => {
                     <Image
                         src={loginImagem}
                         className="absolute w-full h-full inset-0 object-cover opacity-50"
-                        alt="login background"
+                        alt="Imagem de fundo do login"
+                        aria-hidden="true"
                     />
 
-                    <div className="hidden lg:relative lg:block lg:m-auto lg:justify-items-center lg:p-12">
+                    <div
+                        className="hidden lg:relative lg:block lg:m-auto lg:justify-items-center lg:p-12"
+                        aria-label="Página Inicial"
+                    >
                         <Link className="block text-white" href="/">
                             <Image
                                 src={logoCCR}
-                                alt="logo CCR"
+                                alt="Logo da CCR"
                                 className="w-28 h-28 bg-gray-100/60 rounded-3xl"
                             />
                         </Link>
