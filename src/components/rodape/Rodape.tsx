@@ -5,8 +5,6 @@ import logoCCR from '../../../public/images/logo-CCR.png'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
-//todo aplicar acessibilidade
-
 const Rodape = () => {
     const pathname = usePathname()
 
@@ -18,7 +16,7 @@ const Rodape = () => {
                 <div className="flex items-center space-x-4">
                     <Image
                         src={logoCCR}
-                        alt="Logo da Empresa"
+                        alt="Logo da CCR Mobilidade"
                         width={50}
                         height={50}
                     />
@@ -27,40 +25,49 @@ const Rodape = () => {
                     </span>
                 </div>
 
-                <nav className="flex space-x-6 mt-4 md:mt-0">
+                <nav
+                    className="flex space-x-6 mt-4 md:mt-0"
+                    aria-label="Navegação do rodapé"
+                >
                     <Link
                         href="/estacao&trens"
                         className="hover:text-blue-400 transition"
+                        aria-label="Acessar página de Estação e Trens"
                     >
                         Estação e Trens
                     </Link>
                     <Link
                         href="/reportar"
                         className="hover:text-blue-400 transition"
+                        aria-label="Acessar página de Reportar"
                     >
                         Reportar
                     </Link>
                     <Link
                         href="/perfil"
                         className="hover:text-blue-400 transition"
+                        aria-label="Acessar página de Perfil"
                     >
                         Perfil
                     </Link>
                     <Link
                         href="/integrantes"
                         className="hover:text-blue-400 transition"
+                        aria-label="Acessar página de Integrantes"
                     >
                         Integrantes
                     </Link>
                     <Link
                         href="/login"
                         className="hover:text-blue-400 transition"
+                        aria-label="Acessar página de Login"
                     >
                         Login
                     </Link>
                     <Link
                         href="/registrar"
                         className="hover:text-blue-400 transition"
+                        aria-label="Acessar página de Registro"
                     >
                         Registro
                     </Link>

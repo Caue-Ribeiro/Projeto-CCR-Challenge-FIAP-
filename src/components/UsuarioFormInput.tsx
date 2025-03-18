@@ -1,7 +1,5 @@
 import { UsuarioFormInputProps } from '@/interfaces/usuarioProps'
 
-//todo aplicar acessibilidade
-
 const UsuarioFormInput = ({
     id,
     nome,
@@ -23,6 +21,9 @@ const UsuarioFormInput = ({
                 id={id}
                 name={input_name}
                 className="mt-1 p-2 border outline-cinzaccr w-full rounded-md border-pretoccr bg-white text-sm text-gray-700 shadow-xs"
+                aria-label={nome}
+                aria-required="true"
+                required
             />
         </div>
     )

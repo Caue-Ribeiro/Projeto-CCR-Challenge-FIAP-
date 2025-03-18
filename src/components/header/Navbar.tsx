@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { FC, ReactElement } from 'react'
 
 type Navlinks = {
     nome: string
@@ -24,7 +25,7 @@ const links: Navlinks[] = [
     },
 ]
 
-const Navbar = () => {
+const Navbar: FC = (): ReactElement => {
     return (
         <nav aria-label="Global" className="hidden md:block ">
             <ul className="flex items-center gap-6 text-sm ">
