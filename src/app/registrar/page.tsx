@@ -4,7 +4,7 @@ import logoCCR from '../../../public/images/logo-CCR.png'
 import Link from 'next/link'
 import UsuarioForm from '@/components/UsuarioForm'
 
-// TODO colocar conferencia de igualdade de senhas
+
 
 const Registrar = () => {
     return (
