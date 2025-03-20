@@ -58,6 +58,7 @@ const NavbarBotoes: FC = (): ReactElement => {
                         width={30}
                         height={30}
                         alt="icone notificacao"
+                        className="hover:animate-[balancar_1s_infinite]"
                     />
                 </Link>
             </nav>
@@ -83,20 +84,11 @@ const NavbarBotoes: FC = (): ReactElement => {
                 </svg>
             </button>
 
-            <div
-                className={`fixed inset-0 z-50 ${
-                    isSidebarOpen
-                        ? 'opacity-100 visible'
-                        : 'opacity-0 invisible'
-                }`}
-                onClick={() => setIsSidebarOpen(false)}
-                aria-hidden={!isSidebarOpen}
-            ></div>
-
             <aside
                 className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform ${
                     isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-                } transition-transform z-50 p-6 flex flex-col gap-4`}
+                } transition-transform z-50 p-6 flex flex-col gap-4 md:hidden
+                )}`}
                 aria-label="Menu lateral"
                 aria-hidden={!isSidebarOpen}
             >

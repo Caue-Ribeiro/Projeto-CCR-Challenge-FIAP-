@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Navbar from './Navbar'
-import HeaderBotoes from './HeaderBotoes'
+import NavbarBotoes from './HeaderBotoes'
 import Image from 'next/image'
 import logoCCR from '../../../public/images/logo-CCR.png'
 import { usePathname } from 'next/navigation'
@@ -26,7 +26,7 @@ const Header = () => {
                     </Link>
                     <div className="flex flex-1 items-center justify-end md:justify-between ">
                         <Navbar />
-                        <HeaderBotoes />
+                        <NavbarBotoes />
                     </div>
                 </div>
             </header>

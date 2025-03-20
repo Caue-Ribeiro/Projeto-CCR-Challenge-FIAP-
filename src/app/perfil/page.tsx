@@ -5,13 +5,15 @@ import Form from 'next/form'
 
 const Perfil = () => {
     return (
-        <section className=" h-screen py-10  my-auto bg-brancoccr">
-            <div className=" lg:w-[80%] md:w-[90%] w-[96%] mx-auto flex gap-4 ">
-                <div className="lg:w-[88%] sm:w-[88%] w-full mx-auto shadow-2xl p-4 rounded-xl h-fit self-center">
+        <main className=" h-screen py-10  my-auto bg-brancoccr">
+            <section className=" lg:w-[80%] md:w-[90%] w-[96%] mx-auto flex gap-4 ">
+                <article className="lg:w-[88%] sm:w-[88%] w-full mx-auto shadow-2xl p-4 rounded-xl h-fit self-center">
                     <div>
-                        <h1 className="lg:text-3xl md:text-2xl text-xl font-extrabold mb-2 text-pretoccr text-center">
-                            Perfil
-                        </h1>
+                        <header>
+                            <h1 className="lg:text-3xl md:text-2xl text-xl font-extrabold mb-2 text-pretoccr text-center">
+                                Perfil
+                            </h1>
+                        </header>
 
                         <Form action={''}>
                             <div className="w-full rounded-sm items-center">
@@ -102,9 +104,9 @@ const Perfil = () => {
                             </div>
                         </Form>
                     </div>
-                </div>
-            </div>
-        </section>
+                </article>
+            </section>
+        </main>
     )
 }
 

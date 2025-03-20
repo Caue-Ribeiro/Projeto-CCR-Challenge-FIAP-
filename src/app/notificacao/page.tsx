@@ -21,10 +21,12 @@ const notificacoes = [
 
 const Notificacoes = () => {
     return (
-        <section className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
-            <h1 className="text-3xl font-bold mb-6 text-center">
-                Notificações
-            </h1>
+        <main className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
+            <header>
+                <h1 className="text-3xl font-bold mb-6 text-center">
+                    Notificações
+                </h1>
+            </header>
 
             <article className="w-full max-w-2xl bg-white rounded-lg shadow-md p-4 sm:p-6 md:p-8">
                 {notificacoes.length > 0 ? (
@@ -51,7 +53,7 @@ const Notificacoes = () => {
                     </p>
                 )}
             </article>
-        </section>
+        </main>
     )
 }
 

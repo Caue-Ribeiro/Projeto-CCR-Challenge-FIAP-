@@ -3,14 +3,16 @@ import reportarIMG from '../../../public/images/reportar.webp'
 import BotaoCustom from '@/components/BotaoCustom'
 import Form from 'next/form'
 
-const page = () => {
+const Reportar = () => {
     return (
-        <section className="flex flex-col-reverse md:flex-row h-screen">
-            <div className="w-full flex flex-col md:w-1/2  bg-brancoccr text-pretoccr p-8 justify-center items-center">
+        <main className="flex flex-col-reverse md:flex-row h-screen">
+            <section className="w-full flex flex-col md:w-1/2  bg-brancoccr text-pretoccr p-8 justify-center items-center">
                 <h1 className="text-3xl font-bold mb-6 text-center md:text-left">
                     Informe à CCR
                 </h1>
                 <Form action={''} className="w-full grid justify-items-center">
+                    {/* inserir fieldset */}
+
                     <label className="w-full max-w-md mb-2 text-pretoccr">
                         Categoria
                     </label>
@@ -49,9 +51,9 @@ const page = () => {
                         aria_label="botão de confirmar"
                     />
                 </Form>
-            </div>
+            </section>
 
-            <div
+            <figure
                 className="w-full h-full md:w-1/2 relative md:h-auto"
                 aria-hidden="true"
             >
@@ -63,8 +65,8 @@ const page = () => {
                     quality={100}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t  md:bg-gradient-to-r from-brancoccr to-transparent"></div>
-            </div>
-        </section>
+            </figure>
+        </main>
     )
 }
-export default page
+export default Reportar

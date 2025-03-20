@@ -7,3 +7,19 @@
     --color-pretoccr: #000000;
     --color-vermelhoHover: #c46252;
 }
+
+@keyframes balancar {
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
+}
