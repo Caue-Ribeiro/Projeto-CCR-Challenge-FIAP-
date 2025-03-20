@@ -58,7 +58,7 @@ export default function Home() {
                             Reportar
                         </h1>
                         <p className="mt-4 text-lg md:text-xl">
-                            Informe ao CCR problemas na estão, trens, etc.
+                            Informe à CCR problemas na estação, trens, etc.
                         </p>
                         <Link
                             href="/reportar"

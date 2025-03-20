@@ -6,7 +6,7 @@ import UsuarioForm from '@/components/UsuarioForm'
 
 const Login = () => {
     return (
-        <section className="bg-white">
+        <main className="bg-white">
             <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
                 <section className="relative flex h-32 items-center bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
                     <Image
@@ -28,9 +28,9 @@ const Login = () => {
                             />
                         </Link>
 
-                        <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+                        <h1 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
                             Bem vindo à CCR!
-                        </h2>
+                        </h1>
                     </div>
                 </section>
 
@@ -40,7 +40,7 @@ const Login = () => {
                     </div>
                 </section>
             </div>
-        </section>
+        </main>
     )
 }
 export default Login
