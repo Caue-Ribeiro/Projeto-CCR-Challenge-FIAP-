@@ -27,7 +27,7 @@ const links: Navlinks[] = [
 
 const Navbar: FC = (): ReactElement => {
     return (
-        <nav aria-label="Global" className="hidden md:block ">
+        <nav aria-label="Global" className="hidden md:block">
             <ul className="flex items-center gap-6 text-sm ">
                 {links.map(({ nome, diretorio }) => (
                     <li key={nome}>
