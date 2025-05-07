@@ -2,7 +2,7 @@ import Image from 'next/image'
 import loginImagem from '../../../public/images/login-cadastro.webp'
 import logoCCR from '../../../public/images/logo-CCR.png'
 import Link from 'next/link'
-import UsuarioForm from '@/components/UsuarioForm'
+import FormLogin from '@/components/FormLogin'
 
 const Login = () => {
     return (
@@ -36,7 +36,32 @@ const Login = () => {
 
                 <section className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
                     <div className="max-w-xl lg:max-w-3xl">
-                        <UsuarioForm />
+                        <h2 className="lg:text-3xl md:text-2xl text-xl font-extrabold">
+                            Login de Usuário
+                        </h2>
+
+                        <FormLogin />
+
+                        <div className="col-span-8  sm:flex sm:items-center sm:gap-4 mt-3">
+                            <p className="mt-4 text-sm text-gray-500 sm:mt-0">
+                                Não tem conta ainda?
+                                <Link
+                                    href="/registrar"
+                                    className="text-gray-700 underline ml-1"
+                                    aria-label="Cadastrar"
+                                >
+                                    Cadastrar
+                                </Link>
+                                .
+                            </p>
+                            <Link
+                                className="text-gray-700 underline ml-1"
+                                href="/"
+                                aria-label="Página Inicial"
+                            >
+                                Página Inicial
+                            </Link>
+                        </div>
                     </div>
                 </section>
             </div>
