@@ -12,7 +12,7 @@ const Rodape = () => {
 
     return (
         !esconderRotas.includes(pathname) && (
-            <footer className="w-full bg-brancoccr text-pretoccr py-6 px-8 flex flex-col md:flex-row justify-between items-center">
+            <footer className="w-full  bg-brancoccr text-pretoccr py-6 px-8 flex flex-col md:flex-row justify-between items-center">
                 <div className="flex items-center space-x-4">
                     <Image
                         src={logoCCR}

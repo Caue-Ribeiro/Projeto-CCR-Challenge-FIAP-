@@ -10,11 +10,11 @@ import { usePathname } from 'next/navigation'
 const Header = () => {
     const pathname = usePathname()
 
-    const esconderRotas = ['/login', '/registrar']
+    const rotasSemHeaderFooter = ['/login', '/registrar']
 
     return (
-        !esconderRotas.includes(pathname) && (
-            <header className="bg-white">
+        !rotasSemHeaderFooter.includes(pathname) && (
+            <header className="bg-white ">
                 <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
                     <Link className="block text-vermelhoccr" href="/">
                         <Image
