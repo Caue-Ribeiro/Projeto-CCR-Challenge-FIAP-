@@ -1,29 +1,93 @@
+'use client'
+
 import Image from 'next/image'
 import reportarIMG from '../../../public/images/reportar.webp'
 import BotaoCustom from '@/components/BotaoCustom'
-import Form from 'next/form'
+import { useEffect, useRef, useState } from 'react'
+import { verificarSessao } from '../lib/sessao'
+import { customFetchPython } from '@/utils'
 
 const Reportar = () => {
+    const [estaLogado, setEstaLogado] = useState(false)
+    const [dadosUsuario, setDadosUsuario] = useState({ id: null, nome: '' })
+    const [carregandoPostagem, setCarregandoPostagem] = useState(false)
+    const formRef = useRef<HTMLFormElement>(null)
+
+    useEffect(() => {
+        const verificarUsuarioAtivo = async () => {
+            const estadoSessao = await verificarSessao()
+
+            setEstaLogado(estadoSessao)
+        }
+
+        verificarUsuarioAtivo()
+    }, [])
+
+    useEffect(() => {
+        if (estaLogado) {
+            const dadosLocal = localStorage.getItem('login') || ''
+            const dadosLocalTratado = JSON.parse(dadosLocal)
+            setDadosUsuario(dadosLocalTratado)
+        }
+    }, [estaLogado])
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        const formData = new FormData(e.target as HTMLFormElement)
+
+        const dadosReport = {
+            id_usuario: estaLogado ? dadosUsuario.id : null,
+            tipo_alerta: formData.get('categoria'),
+            descricao_alerta: formData.get('descricao'),
+            nome_anonimo: estaLogado ? null : formData.get('nome'),
+            email_anonimo: estaLogado ? null : formData.get('email'),
+            estacao: formData.get('estacao'),
+        }
+
+        try {
+            setCarregandoPostagem(true)
+
+            const { data: resposta } = await customFetchPython.post(
+                '/reports',
+                dadosReport,
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                }
+            )
+
+            if (!resposta) throw new Error('Erro ao enviar')
+
+            alert('Report enviado com sucesso!')
+        } catch (erro) {
+            console.error('Erro:', erro)
+            alert('Erro ao enviar report')
+        }
+
+        setCarregandoPostagem(false)
+        formRef.current?.reset()
+    }
+
     return (
-        <main className="flex flex-col-reverse md:flex-row h-screen">
+        <main className="flex flex-col-reverse md:flex-row h-screen overflow-y-auto">
             <section className="w-full flex flex-col md:w-1/2  bg-brancoccr text-pretoccr p-8 justify-center items-center">
                 <h1 className="text-3xl font-bold mb-6 text-center md:text-left">
                     Informe à CCR
                 </h1>
-                <Form action={''} className="w-full grid justify-items-center">
-                    {/* inserir fieldset */}
-
+                <form
+                    ref={formRef}
+                    onSubmit={handleSubmit}
+                    className="w-full  grid justify-items-center"
+                >
                     <label className="w-full max-w-md mb-2 text-pretoccr">
                         Categoria
                     </label>
-                    <select
+                    <input
+                        type="text"
+                        placeholder="Ex.: Furto"
                         className="w-full max-w-md p-3 rounded-lg bg-brancoccr text-pretoccr border border-gray-700 focus:outline-none focus:ring-2 focus:ring-vermelhoccr mb-4"
-                        aria-label="Selecione uma categoria"
-                    >
-                        <option value="">Selecione uma opção</option>
-                        <option value="opcao1">Opção 1</option>
-                        <option value="opcao2">Opção 2</option>
-                    </select>
+                        aria-label="Digite uma categoria"
+                        name="categoria"
+                    />
 
                     <label className="w-full max-w-md mb-2 text-pretoccr">
                         Estação
@@ -33,7 +97,32 @@ const Reportar = () => {
                         placeholder="Digite a estação..."
                         className="w-full max-w-md p-3 rounded-lg bg-brancoccr text-pretoccr border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
                         aria-label="Campo de entrada para a estação"
+                        name="estacao"
                     />
+
+                    {!estaLogado && (
+                        <>
+                            <label className="w-full max-w-md mb-2 text-pretoccr">
+                                Nome
+                            </label>
+                            <input
+                                name="nome"
+                                type="text"
+                                className="w-full max-w-md p-3 rounded-lg bg-brancoccr text-pretoccr border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+                                required
+                            />
+
+                            <label className="w-full max-w-md mb-2 text-pretoccr">
+                                Email
+                            </label>
+                            <input
+                                name="email"
+                                type="email"
+                                className="w-full max-w-md p-3 rounded-lg bg-brancoccr text-pretoccr border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+                                required
+                            />
+                        </>
+                    )}
 
                     <label className="w-full max-w-md mb-2 text-pretoccr">
                         Descreva
@@ -42,15 +131,16 @@ const Reportar = () => {
                         placeholder="Descreva a situação ocorrida..."
                         className="w-full max-w-md p-3 h-32 rounded-lg bg-brancoccr text-pretoccr border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
                         aria-label="Campo de entrada para descrever a situação"
+                        name="descricao"
                     ></textarea>
 
                     <BotaoCustom
-                        nome="Confirmar"
+                        nome={carregandoPostagem ? 'Enviando...' : 'Enviar'}
                         type="submit"
                         className="w-full max-w-md rounded-md border border-vermelhoccr bg-vermelhoccr px-12 py-3 text-xl font-medium text-white transition hover:bg-transparent hover:text-pretoccr focus:ring-3 focus:outline-hidden"
                         aria_label="botão de confirmar"
                     />
-                </Form>
+                </form>
             </section>
 
             <figure
