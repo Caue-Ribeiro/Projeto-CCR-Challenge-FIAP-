@@ -3,6 +3,8 @@ import Link from 'next/link'
 import notificacao from '../../../public/images/notificacao.svg'
 import { FC, ReactElement, useState } from 'react'
 import closeBtn from '../../../public/images/close.png'
+import { useContextoGlobal } from '@/app/context'
+import BotaoLogout from '../BotaoLogout'
 
 type Navlinks = {
     nome: string
@@ -30,6 +32,7 @@ const links: Navlinks[] = [
 
 const NavbarBotoes: FC = (): ReactElement => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+    const { dadosUsuario } = useContextoGlobal()
 
     return (
         <section className="flex items-center gap-4">
@@ -37,20 +40,29 @@ const NavbarBotoes: FC = (): ReactElement => {
                 className="flex gap-4 items-center"
                 aria-label="Navegação principal"
             >
-                <Link
-                    className="block rounded-md bg-vermelhoccr px-5 py-2.5 text-sm font-medium text-brancoccr transition hover:bg-cinzaccr"
-                    href="/login"
-                    aria-label="Acessar página de login"
-                >
-                    Login
-                </Link>
-                <Link
-                    className="hidden rounded-md bg-cinzaccr px-5 py-2.5 text-sm font-medium text-brancoccr transition hover:bg-vermelhoccr sm:block"
-                    href="/registrar"
-                    aria-label="Acessar página de registro"
-                >
-                    Registro
-                </Link>
+                {dadosUsuario?.id ? (
+                    <>
+                        <p>Bem vindo, {dadosUsuario?.nome}</p>
+                        <BotaoLogout />
+                    </>
+                ) : (
+                    <>
+                        <Link
+                            className="block rounded-md bg-vermelhoccr px-5 py-2.5 text-sm font-medium text-brancoccr transition hover:bg-cinzaccr"
+                            href="/login"
+                            aria-label="Acessar página de login"
+                        >
+                            Login
+                        </Link>
+                        <Link
+                            className="hidden rounded-md bg-cinzaccr px-5 py-2.5 text-sm font-medium text-brancoccr transition hover:bg-vermelhoccr sm:block"
+                            href="/registrar"
+                            aria-label="Acessar página de registro"
+                        >
+                            Registro
+                        </Link>
+                    </>
+                )}
 
                 <Link href="/notificacao" aria-label="Notificações">
                     <Image
@@ -62,12 +74,13 @@ const NavbarBotoes: FC = (): ReactElement => {
                     />
                 </Link>
             </nav>
+
             <button
                 onClick={() => setIsSidebarOpen(true)}
                 className="block rounded-sm bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden cursor-pointer"
                 aria-label="Abrir menu lateral"
             >
-                <span className="sr-only">Toggle menu</span>
+                <span className="sr-only">Alternar menu</span>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="size-5"
