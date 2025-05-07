@@ -5,4 +5,6 @@ export interface BotaoProps {
     type: TypeBotao
     className: string
     aria_label?: string
+    onClick?: () => void
+    desabilitado?: boolean
 }
