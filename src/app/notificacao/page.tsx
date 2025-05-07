@@ -3,19 +3,19 @@ const notificacoes = [
         id: 1,
         titulo: 'Atualização no Sistema',
         mensagem: 'Uma nova versão da plataforma foi lançada.',
-        data: '16/03/2025',
+        data: '16/05/2025',
     },
     {
         id: 2,
         titulo: 'Manutenção Programada',
         mensagem: 'O sistema ficará fora do ar das 02h às 04h.',
-        data: '18/03/2025',
+        data: '18/05/2025',
     },
     {
         id: 3,
         titulo: 'Novo Recurso Disponível',
         mensagem: 'Agora você pode personalizar suas preferências.',
-        data: '20/03/2025',
+        data: '20/06/2025',
     },
 ]
 
