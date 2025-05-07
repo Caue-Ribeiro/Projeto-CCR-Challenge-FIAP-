@@ -7,16 +7,9 @@ export const camposFormularioRegistro: UsuarioFormInputProps[] = [
         input_name: 'nome',
         nome: 'Nome',
         tipo: 'text',
-        className: 'col-span-6 sm:col-span-3',
+        className: 'col-span-6 ',
     },
-    {
-        key: 'sobrenome',
-        id: 'sobrenome',
-        input_name: 'sobre_nome',
-        nome: 'Sobrenome',
-        tipo: 'text',
-        className: 'col-span-6 sm:col-span-3',
-    },
+
     {
         key: 'email',
         id: 'email',
@@ -58,6 +51,6 @@ export const camposFormularioLogin: UsuarioFormInputProps[] = [
         input_name: 'senha',
         nome: 'Senha',
         tipo: 'password',
-        className: 'col-span-6 sm:col-span-3',
+        className: 'col-span-6 ',
     },
 ]
