@@ -63,16 +63,6 @@ const NavbarBotoes: FC = (): ReactElement => {
                         </Link>
                     </>
                 )}
-
-                <Link href="/notificacao" aria-label="Notificações">
-                    <Image
-                        src={notificacao}
-                        width={30}
-                        height={30}
-                        alt="icone notificacao"
-                        className="hover:animate-[balancar_1s_infinite]"
-                    />
-                </Link>
             </nav>
 
             <button
