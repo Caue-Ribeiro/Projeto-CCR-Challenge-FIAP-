@@ -21,10 +21,10 @@ interface DadosContextType {
     setDadosPredicao: React.Dispatch<React.SetStateAction<PredicaoType>>
     dadosUsuario: DadosUsuario | null
     setDadosUsuario: React.Dispatch<React.SetStateAction<DadosUsuario | null>>
-    dadosNome: string | undefined
-    setDadosNome: React.Dispatch<React.SetStateAction<string | undefined>>
-    dadosEmail: string | undefined
-    setDadosEmail: React.Dispatch<React.SetStateAction<string | undefined>>
+    dadosNome: string
+    setDadosNome: React.Dispatch<React.SetStateAction<string | string>>
+    dadosEmail: string
+    setDadosEmail: React.Dispatch<React.SetStateAction<string | string>>
 }
 
 interface DadosContextProps {
@@ -59,8 +59,8 @@ export const DadosGlobalProvider = ({ children }: DadosContextProps) => {
 
     const [dadosUsuario, setDadosUsuario] = useState<DadosUsuario | null>(null)
 
-    const [dadosNome, setDadosNome] = useState<string | undefined>(undefined)
-    const [dadosEmail, setDadosEmail] = useState<string | undefined>(undefined)
+    const [dadosNome, setDadosNome] = useState<string | string>('')
+    const [dadosEmail, setDadosEmail] = useState<string | string>('')
 
     useEffect(() => {
         const temCookie = async () => {
