@@ -1,6 +1,6 @@
 import { UsuarioFormInputProps } from '@/interfaces/usuarioProps'
 
-export const camposFormularioRegistro: UsuarioFormInputProps[] = [
+export const camposFormularioRegistro: Readonly<UsuarioFormInputProps[]> = [
     {
         key: 'nome',
         id: 'nome',
@@ -36,7 +36,7 @@ export const camposFormularioRegistro: UsuarioFormInputProps[] = [
     },
 ]
 
-export const camposFormularioLogin: UsuarioFormInputProps[] = [
+export const camposFormularioLogin: Readonly<UsuarioFormInputProps[]> = [
     {
         key: 'email',
         id: 'email',

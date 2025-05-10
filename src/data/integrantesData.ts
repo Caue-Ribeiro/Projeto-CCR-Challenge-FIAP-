@@ -2,7 +2,7 @@ import { IntegranteProps } from '@/interfaces/IntegranteProps'
 import github from '../../public/images/github-logo.png'
 import linkedin from '../../public/images/linkedin.png'
 
-export const integrantes: IntegranteProps[] = [
+export const integrantes: Readonly<IntegranteProps[]> = [
     {
         nome: 'Ana Eliza Kurtzious Bomfim',
         rm: 559544,
