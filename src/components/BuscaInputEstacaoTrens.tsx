@@ -5,12 +5,13 @@ import BotaoCustom from './BotaoCustom'
 import { customFetchPython } from '@/utils'
 import { DadosEstacaoType, PreverType } from '@/interfaces/EstacaoTrensTypes'
 import { useContextoGlobal } from '@/app/context'
+import { estacoes } from '@/data/estacoes'
 
 const BuscaInputEstacaoTrens = () => {
     const { setDadosEstacao, setDadosPredicao } = useContextoGlobal()
     const [carregando, setCarregando] = useState<boolean>(false)
 
-    const valorRef = useRef<HTMLInputElement>(null)
+    const valorRef = useRef<HTMLSelectElement>(null)
 
     const controleFormulario = async (e: FormEvent): Promise<void> => {
         e.preventDefault()
@@ -65,13 +66,20 @@ const BuscaInputEstacaoTrens = () => {
 
     return (
         <form className="text-center" onSubmit={controleFormulario}>
-            <input
+            <select
                 ref={valorRef}
-                type="text"
-                placeholder="Digite sua busca..."
-                className="w-full max-w-md p-3 rounded-lg bg-brancoccr text-pretoccr border border-cinzaccr focus:outline-none focus:ring-2 focus:ring-cinzaccr placeholder:text-pretoccr"
-                aria-label="campo de busca"
-            />
+                aria-label="seleção de estação"
+                className="w-full max-w-md overflow-y-auto p-3 rounded-lg bg-brancoccr text-pretoccr border border-cinzaccr focus:outline-none focus:ring-2 focus:ring-cinzaccr placeholder:text-pretoccr"
+            >
+                {estacoes.map(info => {
+                    const { valor, nome } = info
+                    return (
+                        <option aria-label={nome} key={valor} value={valor}>
+                            {nome}
+                        </option>
+                    )
+                })}
+            </select>
 
             <BotaoCustom
                 aria_label="Exibir informação sobre a estação"
