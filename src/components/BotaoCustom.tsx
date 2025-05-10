@@ -11,7 +11,7 @@ const BotaoCustom = ({
     return (
         <button
             type={type}
-            className={className}
+            className={`${className} cursor-pointer`}
             aria-label={aria_label}
             onClick={onClick}
             disabled={desabilitado}
