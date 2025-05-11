@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios'
 
 const URL_PYTHON = 'https://api-python-ccr.onrender.com/'
 
-const URL_JAVA = 'api-quarkus-ccr-production.up.railway.app/usuario'
+const URL_JAVA = 'https://api-quarkus-ccr-production.up.railway.app/usuario'
 
 export const customFetchPython: AxiosInstance = axios.create({
     baseURL: URL_PYTHON,
