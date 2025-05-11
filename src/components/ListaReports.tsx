@@ -2,6 +2,7 @@
 import { customFetchPython } from '@/utils'
 import { useState, useEffect } from 'react'
 import { FiEdit, FiTrash2 } from 'react-icons/fi'
+import CarregadorCustom from './CarregadorCustom'
 
 interface Report {
     id_report: number
@@ -15,26 +16,35 @@ const ListaReports = () => {
     const [reports, setReports] = useState<Report[]>([])
     const [editando, setEditando] = useState<number | null>(null)
     const [novaDescricao, setNovaDescricao] = useState('')
-    const [usuarioID, setUsuarioID] = useState<string>('')
+    const [usuarioID, setUsuarioID] = useState<string | null>(null)
+    const [editandoID, setEditandoID] = useState<number | null>(null)
+    const [deletandoID, setDeletandoID] = useState<number | null>(null)
+    const [carregandoDados, setCarregandoDados] = useState(false)
 
     useEffect(() => {
-        const dadosLocal = localStorage.getItem('login') || ''
-
-        setUsuarioID(JSON.parse(dadosLocal).id)
+        if (typeof window !== 'undefined') {
+            const dadosLocal = JSON.parse(localStorage.getItem('login') || '{}')
+            setUsuarioID(dadosLocal.id)
+        }
     }, [])
 
     useEffect(() => {
+        if (!usuarioID) return
+
         const buscarReports = async () => {
-            await customFetchPython
-                .get('/reports', {
-                    headers: {
-                        'X-User-ID': usuarioID,
-                    },
+            setCarregandoDados(true)
+            try {
+                const resposta = await customFetchPython.get('/reports', {
+                    headers: { 'X-User-ID': usuarioID },
                 })
-                .then(response => setReports(response.data))
-                .catch(error =>
-                    console.error('Erro ao buscar relatórios:', error)
-                )
+                console.log(resposta)
+
+                setReports(resposta?.data)
+                setCarregandoDados(false)
+            } catch (error) {
+                setCarregandoDados(false)
+                console.error('Erro ao buscar relatórios.', error)
+            }
         }
 
         buscarReports()
@@ -45,7 +55,7 @@ const ListaReports = () => {
     }
 
     const handleEditar = async (id: number) => {
-        console.log(usuarioID)
+        setEditandoID(id)
 
         try {
             const resposta = await customFetchPython.put(
@@ -72,14 +82,13 @@ const ListaReports = () => {
                 setEditando(null)
             }
         } catch (error) {
-            console.error('Erro ao editar:', error)
+            console.error('Erro ao editar.', error)
         }
     }
 
     const handleDeletar = async (id: number) => {
-        console.log(id)
-
         if (confirm('Tem certeza que deseja excluir este report?')) {
+            setDeletandoID(id)
             try {
                 const resposta = await customFetchPython.delete(
                     `/reports/${id}`,
@@ -96,90 +105,103 @@ const ListaReports = () => {
                     )
                 }
             } catch (error) {
-                console.error('Erro ao deletar:', error)
+                console.error('Erro ao deletar.', error)
             }
         }
     }
 
     return (
         <>
-            {reports.map(report => (
-                <div
-                    key={report.id_report}
-                    className="bg-white rounded-lg shadow-md p-4 mb-4"
-                >
-                    <div className="flex justify-between items-start">
-                        <div>
-                            <h3 className="font-semibold text-lg">
-                                {report.tipo_alerta} - {report.estacao}
-                            </h3>
-                            <p className="text-gray-600 text-sm mb-2">
-                                {new Date(
-                                    report.data_report
-                                ).toLocaleDateString()}
-                            </p>
-                            {editando === report.id_report ? (
-                                <textarea
-                                    value={novaDescricao}
-                                    onChange={e =>
-                                        setNovaDescricao(e.target.value)
-                                    }
-                                    className="w-full p-2 border rounded"
-                                />
-                            ) : (
-                                <p className="text-gray-800">
-                                    {truncarTexto(report.descricao_alerta, 100)}
+            {carregandoDados ? (
+                <CarregadorCustom>Carregando dados...</CarregadorCustom>
+            ) : (
+                reports.map(report => (
+                    <div
+                        key={report.id_report}
+                        className="bg-white rounded-lg shadow-md p-4 mb-4"
+                    >
+                        <div className="flex justify-between items-start">
+                            <div>
+                                <h3 className="font-semibold text-lg">
+                                    {report.tipo_alerta} - {report.estacao}
+                                </h3>
+                                <p className="text-gray-600 text-sm mb-2">
+                                    {new Date(
+                                        report.data_report
+                                    ).toLocaleDateString()}
                                 </p>
-                            )}
-                        </div>
+                                {editando === report.id_report ? (
+                                    <textarea
+                                        value={novaDescricao}
+                                        onChange={e =>
+                                            setNovaDescricao(e.target.value)
+                                        }
+                                        className="w-full p-2 border rounded"
+                                    />
+                                ) : (
+                                    <p className="text-gray-800">
+                                        {truncarTexto(
+                                            report.descricao_alerta,
+                                            100
+                                        )}
+                                    </p>
+                                )}
+                            </div>
 
-                        <div className="flex gap-2">
-                            {editando === report.id_report ? (
-                                <>
-                                    <button
-                                        onClick={() =>
-                                            handleEditar(report.id_report)
-                                        }
-                                        className="text-green-600 hover:text-green-800"
-                                    >
-                                        Salvar
-                                    </button>
-                                    <button
-                                        onClick={() => setEditando(null)}
-                                        className="text-gray-600 hover:text-gray-800"
-                                    >
-                                        Cancelar
-                                    </button>
-                                </>
-                            ) : (
-                                <>
-                                    <button
-                                        type="button"
-                                        onClick={() => {
-                                            setEditando(report.id_report)
-                                            setNovaDescricao(
-                                                report.descricao_alerta
-                                            )
-                                        }}
-                                        className="text-blue-600 hover:text-blue-800"
-                                    >
-                                        <FiEdit size={20} />
-                                    </button>
-                                    <button
-                                        type="button"
-                                        onClick={() =>
-                                            handleDeletar(report.id_report)
-                                        }
-                                        className="text-red-600 hover:text-red-800"
-                                    >
-                                        <FiTrash2 size={20} />
-                                    </button>
-                                </>
-                            )}
+                            <div className="flex gap-2">
+                                {editando === report.id_report ? (
+                                    <>
+                                        <button
+                                            onClick={() =>
+                                                handleEditar(report.id_report)
+                                            }
+                                            className="text-green-600 hover:text-green-800 cursor-pointer"
+                                        >
+                                            {editandoID
+                                                ? 'Salvando...'
+                                                : 'Salvar'}
+                                        </button>
+                                        <button
+                                            onClick={() => setEditando(null)}
+                                            className="text-gray-600 hover:text-gray-800 cursor-pointer"
+                                        >
+                                            Cancelar
+                                        </button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                setEditando(report.id_report)
+                                                setNovaDescricao(
+                                                    report.descricao_alerta
+                                                )
+                                            }}
+                                            className="text-blue-600 hover:text-blue-800 cursor-pointer"
+                                        >
+                                            <FiEdit size={20} />
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                handleDeletar(report.id_report)
+                                            }
+                                            className={`text-red-600 hover:text-red-800 cursor-pointer ${
+                                                deletandoID ==
+                                                    report.id_report &&
+                                                'animate-bounce'
+                                            }`}
+                                        >
+                                            <FiTrash2 size={20} />
+                                        </button>
+                                    </>
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                ))
+            )}
         </>
     )
 }

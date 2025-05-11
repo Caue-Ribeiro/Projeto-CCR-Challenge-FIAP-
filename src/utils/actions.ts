@@ -85,7 +85,5 @@ export const login = async (preState: unknown, formData: FormData) => {
         if (error.request) {
             return { error: 'Sem resposta do servidor.' }
         }
-
-        return { error: 'Erro durante o login.' }
     }
 }
