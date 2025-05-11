@@ -25,7 +25,9 @@ export const registro = async (prevState: unknown, formData: FormData) => {
     }
 
     if (!EMAIL_VALIDO || !SENHAS_VALIDAS) {
-        return { error: 'Email e/ou senha invalido(s).' }
+        return {
+            error: 'Email e/ou senha invalido(s).Verifique seu email. Senhas devem conter no mínimo 8 caracteres sendo: 3 números, 1 caracter especial, 4 letras.',
+        }
     }
 
     if (!SENHAS_IGUAIS) {

@@ -11,7 +11,7 @@ export const integrantes: Readonly<IntegranteProps[]> = [
         materia: 'Business Model e Relational Database',
         github: 'https://github.com/ana-elizakb',
         linkedin: 'https://www.linkedin.com/in/ana-eliza-bomfim-51921b2a8/',
-        imagem_perfil: '/images/foto-ana.jfif',
+        imagem_perfil: '/images/foto-ana.png',
         imagem_linkedin: linkedin,
         imagem_github: github,
     },
