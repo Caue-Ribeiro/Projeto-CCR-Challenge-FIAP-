@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import notificacao from '../../../public/images/notificacao.svg'
+
 import { FC, ReactElement, useState } from 'react'
 import closeBtn from '../../../public/images/close.png'
 import { useContextoGlobal } from '@/app/context'

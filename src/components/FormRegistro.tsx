@@ -22,6 +22,7 @@ const FormRegistro = () => {
             setDadosUsuario(state.dados)
             redirect(state.redirecionar)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state])
 
     return (
