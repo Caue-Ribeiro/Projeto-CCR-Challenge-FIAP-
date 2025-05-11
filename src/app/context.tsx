@@ -14,6 +14,7 @@ interface PredicaoType {
     previsao_atraso: number
 }
 
+//tipagem para estados usados no contexto global para recebimento de dados corretos
 interface DadosContextType {
     dadosEstacao: DadosEstacaoType[]
     setDadosEstacao: React.Dispatch<React.SetStateAction<DadosEstacaoType[]>>
@@ -52,16 +53,18 @@ export const useContextoGlobal = () => {
 }
 
 export const DadosGlobalProvider = ({ children }: DadosContextProps) => {
+    //estados para controle de dados estação
     const [dadosEstacao, setDadosEstacao] = useState<DadosEstacaoType[]>([])
     const [dadosPredicao, setDadosPredicao] = useState<PredicaoType>(
         {} as PredicaoType
     )
 
+    //estados para controle de dados do usuario
     const [dadosUsuario, setDadosUsuario] = useState<DadosUsuario | null>(null)
-
     const [dadosNome, setDadosNome] = useState<string | string>('')
     const [dadosEmail, setDadosEmail] = useState<string | string>('')
 
+    //verificação inicial de sessão ativa para recolher ou remover dados do local storage
     useEffect(() => {
         const temCookie = async () => {
             const sessaoAtiva = await verificarSessao()
@@ -75,6 +78,7 @@ export const DadosGlobalProvider = ({ children }: DadosContextProps) => {
         temCookie()
     }, [])
 
+    //recolher dados para inputs página perfil e controle de atualização
     useEffect(() => {
         const dadosLocal = localStorage.getItem('login') || ''
         if (dadosLocal != '') {

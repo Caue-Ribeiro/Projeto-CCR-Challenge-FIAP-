@@ -7,6 +7,7 @@ import { redirect } from 'next/navigation'
 const BotaoLogout = () => {
     const { setDadosUsuario } = useContextoGlobal()
 
+    //função para eliminar cookies e dados do local storage
     const logoutUsuario = async () => {
         const { sucesso } = await deletarSessao()
 

@@ -19,11 +19,11 @@ const Perfil = () => {
         setDadosNome,
         dadosEmail,
         setDadosEmail,
-    } = useContextoGlobal()
+    } = useContextoGlobal() //acesso aos dados por Context
 
-    const [ativadorInput, setAtivadorInput] = useState(true)
-    const [carregandoAtualizar, setCarregandoAtualizar] = useState(false)
-    const [carregandoDelecao, setCarregandoDelecao] = useState(false)
+    const [ativadorInput, setAtivadorInput] = useState(true) //para travar/destravar input
+    const [carregandoAtualizar, setCarregandoAtualizar] = useState(false) //controle de texto botão atualizar
+    const [carregandoDelecao, setCarregandoDelecao] = useState(false) //controle de texto botão deletar
 
     const dadosAtualizados = {
         nome: dadosNome,
@@ -31,6 +31,7 @@ const Perfil = () => {
         senha: dadosUsuario?.senha,
     }
 
+    //função para atualizar dados do usuario
     const atualizarDados = async () => {
         console.log(dadosUsuario?.id)
 
@@ -52,6 +53,7 @@ const Perfil = () => {
         setCarregandoAtualizar(false)
     }
 
+    //função para deletar dados do usuario
     const deletarUsuario = async () => {
         const confirmaDelecao = confirm(
             'Tem certeza que deseja excluir sua conta?'

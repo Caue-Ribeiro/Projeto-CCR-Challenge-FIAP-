@@ -14,6 +14,7 @@ const FormRegistro = () => {
     )
     const { setDadosUsuario, setDadosNome, setDadosEmail } = useContextoGlobal()
 
+    //redirecionar usuario assim que registrado
     useEffect(() => {
         if (state?.dados && state?.redirecionar) {
             localStorage.setItem('login', JSON.stringify(state?.dados))

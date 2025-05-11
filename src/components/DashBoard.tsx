@@ -12,6 +12,7 @@ const DashBoard = () => {
 
     const controleDashboard = () => setAbrirDashboard(!abrirDashboard)
 
+    //verificar se abertura da janela de graficos é necessária
     useEffect(() => {
         if (dadosEstacao.length && dadosPredicao) setAbrirDashboard(true)
     }, [dadosEstacao, dadosPredicao])

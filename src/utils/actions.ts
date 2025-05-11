@@ -3,9 +3,11 @@
 import { customFetchJava } from '.'
 import { criarSessao } from '@/app/lib/sessao'
 
+//função para registro de usuario na plataforma
 export const registro = async (prevState: unknown, formData: FormData) => {
     const DADOS = Object.fromEntries(formData)
 
+    //expressão regular
     const EMAIL_CHECADOR = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     const SENHA_CHECADOR =
         /^(?=(.*\d){3,})(?=.*[!@#$%^&*])(?=(.*[a-zA-Z]){4,}).{8,}$/
@@ -53,6 +55,7 @@ export const registro = async (prevState: unknown, formData: FormData) => {
     return { dados: resposta?.data, redirecionar: '/' }
 }
 
+//função para login de usuario na plataforma
 export const login = async (preState: unknown, formData: FormData) => {
     const dadosLogin = Object.fromEntries(formData)
 

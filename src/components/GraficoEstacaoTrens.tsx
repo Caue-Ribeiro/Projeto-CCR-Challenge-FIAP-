@@ -15,7 +15,7 @@ export default function Grafico({ data }: { data: DadosEstacaoType[] }) {
     transition-all duration-500 md:w-lg md:mx-auto
     ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-2'}
   `
-
+    //montar grafico em canvas
     useEffect(() => {
         setIsVisible(true) // Dispara a animação
 

@@ -21,6 +21,7 @@ const ListaReports = () => {
     const [deletandoID, setDeletandoID] = useState<number | null>(null)
     const [carregandoDados, setCarregandoDados] = useState(false)
 
+    //recolher id de usuario no local storage
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const dadosLocal = JSON.parse(localStorage.getItem('login') || '{}')
@@ -31,6 +32,7 @@ const ListaReports = () => {
     useEffect(() => {
         if (!usuarioID) return
 
+        //buscar lista de reports do usuario
         const buscarReports = async () => {
             setCarregandoDados(true)
             try {
@@ -50,10 +52,12 @@ const ListaReports = () => {
         buscarReports()
     }, [usuarioID])
 
+    //truncar texto maior que 100 caracteres
     const truncarTexto = (texto: string, max: number) => {
         return texto.length > max ? texto.substring(0, max) + '...' : texto
     }
 
+    //edição de report
     const handleEditar = async (id: number) => {
         setEditandoID(id)
 
@@ -86,6 +90,7 @@ const ListaReports = () => {
         }
     }
 
+    //deletar report
     const handleDeletar = async (id: number) => {
         if (confirm('Tem certeza que deseja excluir este report?')) {
             setDeletandoID(id)

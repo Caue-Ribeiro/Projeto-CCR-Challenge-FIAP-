@@ -11,8 +11,10 @@ const BuscaInputEstacaoTrens = () => {
     const { setDadosEstacao, setDadosPredicao } = useContextoGlobal()
     const [carregando, setCarregando] = useState<boolean>(false)
 
+    //usado para coletar valor vindo do input select
     const valorRef = useRef<HTMLSelectElement>(null)
 
+    //função para coletar dados de uma estação específica e postagem desses dados para endpoint de previsão
     const controleFormulario = async (e: FormEvent): Promise<void> => {
         e.preventDefault()
         setCarregando(true)

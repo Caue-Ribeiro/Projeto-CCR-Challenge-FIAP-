@@ -15,6 +15,7 @@ const Reportar = () => {
     const [verificandoUsuario, setVerificandoUsuario] = useState(true)
     const formRef = useRef<HTMLFormElement>(null)
 
+    //para verificar se há sessão ativa nos cookies
     useEffect(() => {
         const verificarUsuarioAtivo = async () => {
             const estadoSessao = await verificarSessao()
@@ -26,6 +27,7 @@ const Reportar = () => {
         verificarUsuarioAtivo()
     }, [])
 
+    //pegar dados no local storage se sessão estiver ativa
     useEffect(() => {
         if (!estaLogado) return
 
@@ -34,6 +36,7 @@ const Reportar = () => {
         setDadosUsuario(dadosLocal)
     }, [estaLogado])
 
+    //fazer submit de dados
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         const formData = new FormData(e.target as HTMLFormElement)

@@ -13,6 +13,7 @@ const FormLogin = () => {
     const [state, loginAction, isPending] = useActionState(login, undefined)
     const { setDadosUsuario } = useContextoGlobal()
 
+    //para redirecionar usuario assim que logado
     useEffect(() => {
         if (state?.dados && state?.redirecionar) {
             localStorage.setItem('login', JSON.stringify(state?.dados))

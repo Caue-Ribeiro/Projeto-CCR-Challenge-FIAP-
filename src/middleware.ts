@@ -4,6 +4,7 @@ import { cookies } from 'next/headers'
 const rotasPublicas = ['/login', '/registrar']
 const rotasPrivadas = ['/perfil', '/notificacao']
 
+//limitar acesso de usuario caso a paginas privadas caso estiver deslogado
 export default async function middleware(req: NextRequest) {
     const caminho = req.nextUrl.pathname
     const isRotaPublica = rotasPublicas.includes(caminho)

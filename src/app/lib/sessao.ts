@@ -1,6 +1,7 @@
 'use server'
 import { cookies } from 'next/headers'
 
+//função para criação de cookies
 export async function criarSessao(userEmail: string) {
     const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
 
@@ -11,7 +12,7 @@ export async function criarSessao(userEmail: string) {
         sameSite: 'lax',
     })
 }
-
+//função para deleção de cookies
 export async function deletarSessao() {
     const cookie = await cookies()
 
@@ -20,6 +21,7 @@ export async function deletarSessao() {
     return { sucesso: true }
 }
 
+//função para verificar se cookie ainda não expirou
 export async function verificarSessao() {
     const cookie = await cookies()
 
