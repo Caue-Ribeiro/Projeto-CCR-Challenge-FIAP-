@@ -1,4 +1,4 @@
-# 📌 Projeto: Sistema de Estações e Trens //todo: ATUALIZAR README
+# 📌 Projeto: Sistema de Estações e Trens
 
 Este repositório contém o desenvolvimento do sistema de estações e trens, um projeto focado em fornecer informações em tempo real sobre estações, trens e ocorrências relatadas pelos usuários. Além disso, permite que os usuários criem contas para personalizar sua experiência.
 
