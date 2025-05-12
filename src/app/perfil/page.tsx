@@ -55,12 +55,6 @@ const Perfil = () => {
 
     //função para deletar dados do usuario
     const deletarUsuario = async () => {
-        const confirmaDelecao = confirm(
-            'Tem certeza que deseja excluir sua conta?'
-        )
-
-        if (!confirmaDelecao) return
-
         try {
             setCarregandoDelecao(true)
             await deletarSessao()
