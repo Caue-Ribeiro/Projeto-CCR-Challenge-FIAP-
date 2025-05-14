@@ -35,23 +35,23 @@ Abaixo estão algumas capturas de tela do sistema em funcionamento:
 
 ### 📝 Página Registro
 
-![Página Registro](./public/readme/registro.png)
+![Página Registro](https://github.com/challengefiap-ccr/challenge-CCR/blob/18f0d25f430a5d92b177f5d9c6cc3c06933ab77a/public/readme/registro.png)
 
 ### 🏠 Página Inicial
 
-![Página Inicial](./public/readme/principal.png)
+![Página Inicial](https://github.com/challengefiap-ccr/challenge-CCR/blob/18f0d25f430a5d92b177f5d9c6cc3c06933ab77a/public/readme/principal.png)
 
 ### ⚠️ Página de Report
 
-![Página de Report](./public/readme/report.png)
+![Página de Report](https://github.com/challengefiap-ccr/challenge-CCR/blob/18f0d25f430a5d92b177f5d9c6cc3c06933ab77a/public/readme/report.png)
 
 ### 🚆 Página Estação & Trens
 
-![Página Estação e Trens](./public/readme/estacao&trens.png)
+![Página Estação e Trens](https://github.com/challengefiap-ccr/challenge-CCR/blob/18f0d25f430a5d92b177f5d9c6cc3c06933ab77a/public/readme/estacao%26trens.png)
 
 ### 👨🏽‍🦱 Página Perfil
 
-![Página Perfil](./public/readme/perfil.png)
+![Página Perfil](https://github.com/challengefiap-ccr/challenge-CCR/blob/18f0d25f430a5d92b177f5d9c6cc3c06933ab77a/public/readme/perfil.png)
 
 ## 📌 Tecnologias Utilizadas
 
