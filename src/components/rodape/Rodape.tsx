@@ -12,8 +12,8 @@ const Rodape = () => {
 
     return (
         !esconderRotas.includes(pathname) && (
-            <footer className="w-full  bg-brancoccr text-pretoccr py-6 px-8 flex flex-col md:flex-row justify-between items-center">
-                <div className="flex items-center space-x-4">
+            <footer className="w-full bg-brancoccr text-pretoccr text-center py-6 px-8 flex flex-col md:flex-row md:justify-between items-center">
+                <div className="flex flex-col lg:flex-row items-center gap-1.5">
                     <Image
                         src={logoCCR}
                         alt="Logo da CCR Mobilidade"
@@ -26,47 +26,47 @@ const Rodape = () => {
                 </div>
 
                 <nav
-                    className="flex space-x-6 mt-4 md:mt-0"
+                    className="flex flex-col md:flex-row gap-2 mt-4 md:mt-0"
                     aria-label="Navegação do rodapé"
                 >
                     <Link
                         href="/estacao&trens"
-                        className="hover:text-blue-400 transition"
+                        className="hover:text-cinzaccr transition"
                         aria-label="Acessar página de Estação e Trens"
                     >
                         Estação e Trens
                     </Link>
                     <Link
                         href="/reportar"
-                        className="hover:text-blue-400 transition"
+                        className="hover:text-cinzaccr transition"
                         aria-label="Acessar página de Reportar"
                     >
                         Reportar
                     </Link>
                     <Link
                         href="/perfil"
-                        className="hover:text-blue-400 transition"
+                        className="hover:text-cinzaccr transition"
                         aria-label="Acessar página de Perfil"
                     >
                         Perfil
                     </Link>
                     <Link
                         href="/integrantes"
-                        className="hover:text-blue-400 transition"
+                        className="hover:text-cinzaccr transition"
                         aria-label="Acessar página de Integrantes"
                     >
                         Integrantes
                     </Link>
                     <Link
                         href="/login"
-                        className="hover:text-blue-400 transition"
+                        className="hover:text-cinzaccr transition"
                         aria-label="Acessar página de Login"
                     >
                         Login
                     </Link>
                     <Link
                         href="/registrar"
-                        className="hover:text-blue-400 transition"
+                        className="hover:text-cinzaccr transition"
                         aria-label="Acessar página de Registro"
                     >
                         Registro
