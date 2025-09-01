@@ -24,7 +24,7 @@ O sistema é composto por diversas páginas, cada uma com funcionalidades espec�
 -   **Página Integrantes** 👥: Apresenta os membros responsáveis pelo desenvolvimento do projeto.
 
 ## 🔗 Links Importantes
-
+### ATENÇÃO: Devido termos acesso limitado ao servidor por ser conta gratuita, algumas funcionalidades podem não funcionar mais depois de um tempo (projeto feito primeiramente em github acadêmico e lançado em 15/05/2025).
 -   [Projeto na Vercel](https://challenge-ccr.vercel.app/)
 -   [Repositório API em Java Quarkus](https://github.com/challengefiap-ccr/API-QUARKUS-CCR)
 -   [Repositório API em Python Flask](https://github.com/challengefiap-ccr/API_PYTHON_CCR)
